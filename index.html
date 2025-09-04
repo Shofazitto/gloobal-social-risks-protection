@@ -430,22 +430,22 @@
         }
 
         .cyber-visual {
-            width: 550px;
-            height: 550px;
+            width: 600px;
+            height: 450px;
             background: 
-                radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 70%),
-                linear-gradient(135deg, var(--secondary-dark), var(--accent-dark));
+                radial-gradient(circle at center, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
+                linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
             border: 2px solid var(--border-cyber);
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
             overflow: hidden;
-            clip-path: polygon(0 10%, 10% 0, 90% 0, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0 90%);
+            clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
         }
 
-        .global-protection-interface {
+        .global-threat-monitor {
             width: 100%;
             height: 100%;
             position: relative;
@@ -454,98 +454,158 @@
             justify-content: center;
         }
 
-        .world-map-hologram {
-            width: 400px;
-            height: 300px;
+        .earth-satellite-display {
+            width: 350px;
+            height: 350px;
             position: relative;
+            border-radius: 50%;
             background: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400"><defs><linearGradient id="worldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%2300d4ff;stop-opacity:0.3" /><stop offset="50%" style="stop-color:%2300ffa3;stop-opacity:0.2" /><stop offset="100%" style="stop-color:%2300d4ff;stop-opacity:0.3" /></linearGradient></defs><path d="M100,200 Q150,150 200,180 T300,170 T400,160 T500,170 T600,180 T700,190" fill="none" stroke="url(%23worldGrad)" stroke-width="2"/><path d="M80,250 Q130,220 180,240 T280,230 T380,220 T480,230 T580,240 T680,250" fill="none" stroke="url(%23worldGrad)" stroke-width="1.5"/><circle cx="200" cy="180" r="3" fill="%2300ffa3" opacity="0.8"><animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/></circle><circle cx="400" cy="160" r="2.5" fill="%23ff073a" opacity="0.9"><animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.5s" repeatCount="indefinite"/></circle><circle cx="600" cy="180" r="3" fill="%2300d4ff" opacity="0.8"><animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/></circle><circle cx="300" cy="170" r="2" fill="%2339ff14" opacity="0.7"><animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/></circle></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
+                url('https://images.unsplash.com/photo-1614728263952-84ea256f9679?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80'),
+                radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.2) 0%, transparent 50%);
+            background-size: cover;
             background-position: center;
+            box-shadow: 
+                inset 0 0 50px rgba(0, 0, 0, 0.5),
+                0 0 100px rgba(0, 212, 255, 0.3),
+                0 0 200px rgba(0, 255, 163, 0.1);
+            animation: earthRotate 60s linear infinite;
         }
 
-        .threat-indicators {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        @keyframes earthRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .threat-level {
-            padding: 8px 16px;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid var(--cyber-blue);
-            font-size: 0.8rem;
-            color: var(--cyber-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .threat-level.high {
-            border-color: var(--warning-red);
-            color: var(--warning-red);
-            background: rgba(255, 7, 58, 0.1);
-        }
-
-        .threat-level.medium {
-            border-color: var(--cyber-teal);
-            color: var(--cyber-teal);
-            background: rgba(0, 255, 163, 0.1);
-        }
-
-        .threat-level::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: dataFlow 3s linear infinite;
-        }
-
-        .security-grid {
+        .threat-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
+            border-radius: 50%;
             background: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="securityGrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%2300d4ff" stroke-width="0.3" opacity="0.1"/><circle cx="10" cy="10" r="1" fill="%2300ffa3" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23securityGrid)"/></svg>');
-            pointer-events: none;
-            animation: cyberGridMove 60s linear infinite;
+                radial-gradient(circle at 40% 30%, var(--warning-red) 2px, transparent 4px),
+                radial-gradient(circle at 60% 70%, var(--cyber-green) 1.5px, transparent 3px),
+                radial-gradient(circle at 25% 60%, var(--cyber-blue) 2px, transparent 4px),
+                radial-gradient(circle at 75% 40%, var(--warning-red) 1px, transparent 2px);
+            animation: threatPulse 3s ease-in-out infinite;
         }
 
-        .data-streams {
+        @keyframes threatPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .scanning-ring {
             position: absolute;
-            bottom: 30px;
-            left: 30px;
-            right: 30px;
-            height: 60px;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--cyber-blue);
+            border-radius: 50%;
+            animation: scanRotate 4s linear infinite;
+        }
+
+        .scanning-ring::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 1px solid transparent;
+            border-right: 1px solid var(--cyber-teal);
+            border-radius: 50%;
+            animation: scanRotate 6s linear infinite reverse;
+        }
+
+        @keyframes scanRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .threat-analytics {
+            position: absolute;
+            top: 20px;
+            right: 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .stream-line {
-            width: 2px;
-            height: 40px;
-            background: linear-gradient(180deg, transparent, var(--cyber-blue), transparent);
-            animation: streamFlow 2s ease-in-out infinite;
+        .threat-indicator {
+            padding: 6px 12px;
+            background: rgba(0, 212, 255, 0.1);
+            border-left: 3px solid var(--cyber-blue);
+            font-size: 0.75rem;
+            color: var(--cyber-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', monospace;
+            position: relative;
+            backdrop-filter: blur(10px);
         }
 
-        .stream-line:nth-child(2) { animation-delay: 0.5s; }
-        .stream-line:nth-child(3) { animation-delay: 1s; }
-        .stream-line:nth-child(4) { animation-delay: 1.5s; }
+        .threat-indicator.critical {
+            border-left-color: var(--warning-red);
+            color: var(--warning-red);
+            background: rgba(255, 7, 58, 0.1);
+            animation: criticalBlink 2s ease-in-out infinite;
+        }
 
-        @keyframes streamFlow {
-            0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
-            50% { transform: scaleY(1); opacity: 1; }
+        .threat-indicator.secure {
+            border-left-color: var(--cyber-green);
+            color: var(--cyber-green);
+            background: rgba(57, 255, 20, 0.1);
+        }
+
+        @keyframes criticalBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .global-network-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .network-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
+            animation: networkPulse 3s ease-in-out infinite;
+        }
+
+        .network-line:nth-child(1) {
+            top: 25%;
+            left: 10%;
+            right: 60%;
+            animation-delay: 0s;
+        }
+
+        .network-line:nth-child(2) {
+            top: 75%;
+            left: 40%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .network-line:nth-child(3) {
+            top: 50%;
+            left: 5%;
+            right: 70%;
+            animation-delay: 2s;
+        }
+
+        @keyframes networkPulse {
+            0%, 100% { opacity: 0.2; transform: scaleX(0.5); }
+            50% { opacity: 1; transform: scaleX(1); }
         }
 
         .globe-container {
@@ -1004,12 +1064,13 @@
             right: -50px;
             bottom: -50px;
             background: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="earthGrad" cx="50%" cy="30%" r="70%"><stop offset="0%" style="stop-color:%23001a2e;stop-opacity:1" /><stop offset="30%" style="stop-color:%23002a4e;stop-opacity:1" /><stop offset="70%" style="stop-color:%23001a2e;stop-opacity:1" /><stop offset="100%" style="stop-color:%23000a1e;stop-opacity:1" /></radialGradient></defs><circle cx="500" cy="500" r="480" fill="url(%23earthGrad)"/><ellipse cx="350" cy="400" rx="80" ry="120" fill="%23ffaa00" opacity="0.8"/><ellipse cx="450" cy="350" rx="60" ry="100" fill="%23ffaa00" opacity="0.9"/><ellipse cx="550" cy="450" rx="70" ry="110" fill="%23ffaa00" opacity="0.7"/><ellipse cx="650" cy="400" rx="50" ry="90" fill="%23ffaa00" opacity="0.8"/><ellipse cx="250" cy="600" rx="60" ry="80" fill="%23ffaa00" opacity="0.6"/><ellipse cx="750" cy="650" rx="80" ry="100" fill="%23ffaa00" opacity="0.7"/><ellipse cx="500" cy="700" rx="100" ry="60" fill="%23ffaa00" opacity="0.8"/><ellipse cx="300" cy="250" rx="40" ry="60" fill="%23ffaa00" opacity="0.9"/><ellipse cx="700" cy="250" rx="50" ry="70" fill="%23ffaa00" opacity="0.8"/><ellipse cx="200" cy="450" rx="30" ry="50" fill="%23ffaa00" opacity="0.7"/><ellipse cx="800" cy="500" rx="40" ry="60" fill="%23ffaa00" opacity="0.8"/><ellipse cx="400" cy="300" rx="35" ry="55" fill="%23ffaa00" opacity="0.8"/><ellipse cx="600" cy="300" rx="45" ry="65" fill="%23ffaa00" opacity="0.7"/><ellipse cx="150" cy="350" rx="25" ry="40" fill="%23ffaa00" opacity="0.6"/><ellipse cx="850" cy="400" rx="35" ry="50" fill="%23ffaa00" opacity="0.7"/><ellipse cx="350" cy="550" rx="55" ry="75" fill="%23ffaa00" opacity="0.8"/><ellipse cx="650" cy="550" rx="65" ry="85" fill="%23ffaa00" opacity="0.7"/><ellipse cx="450" cy="600" rx="45" ry="65" fill="%23ffaa00" opacity="0.8"/><ellipse cx="550" cy="600" rx="50" ry="70" fill="%23ffaa00" opacity="0.7"/><ellipse cx="250" cy="500" rx="40" ry="60" fill="%23ffaa00" opacity="0.6"/><ellipse cx="750" cy="500" rx="45" ry="65" fill="%23ffaa00" opacity="0.7"/><ellipse cx="300" cy="650" rx="35" ry="50" fill="%23ffaa00" opacity="0.8"/><ellipse cx="700" cy="650" rx="40" ry="55" fill="%23ffaa00" opacity="0.7"/><ellipse cx="400" cy="750" rx="30" ry="45" fill="%23ffaa00" opacity="0.6"/><ellipse cx="600" cy="750" rx="35" ry="50" fill="%23ffaa00" opacity="0.7"/><ellipse cx="500" cy="800" rx="40" ry="60" fill="%23ffaa00" opacity="0.8"/><ellipse cx="150" cy="600" rx="25" ry="35" fill="%23ffaa00" opacity="0.5"/><ellipse cx="850" cy="600" rx="30" ry="40" fill="%23ffaa00" opacity="0.6"/><ellipse cx="200" cy="700" rx="35" ry="50" fill="%23ffaa00" opacity="0.7"/><ellipse cx="800" cy="700" rx="40" ry="55" fill="%23ffaa00" opacity="0.8"/><ellipse cx="350" cy="750" rx="30" ry="45" fill="%23ffaa00" opacity="0.6"/><ellipse cx="650" cy="750" rx="35" ry="50" fill="%23ffaa00" opacity="0.7"/><ellipse cx="450" cy="800" rx="25" ry="40" fill="%23ffaa00" opacity="0.5"/><ellipse cx="550" cy="800" rx="30" ry="45" fill="%23ffaa00" opacity="0.6"/><ellipse cx="100" cy="500" rx="20" ry="30" fill="%23ffaa00" opacity="0.4"/><ellipse cx="900" cy="500" rx="25" ry="35" fill="%23ffaa00" opacity="0.5"/><ellipse cx="500" cy="100" rx="30" ry="45" fill="%23ffaa00" opacity="0.6"/><ellipse cx="500" cy="900" rx="35" ry="50" fill="%23ffaa00" opacity="0.7"/></svg>'),
-                linear-gradient(135deg, rgba(10, 14, 39, 0.8) 0%, rgba(26, 31, 58, 0.7) 100%);
-            background-size: cover, cover;
+                url('https://images.unsplash.com/photo-1614728263952-84ea256f9679?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80'),
+                radial-gradient(circle at 30% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(10, 14, 26, 0.9) 0%, rgba(26, 31, 46, 0.8) 100%);
+            background-size: cover, cover, cover;
             background-position: center;
-            background-blend-mode: overlay;
-            opacity: 0.4;
+            background-blend-mode: overlay, normal, normal;
+            opacity: 0.3;
             z-index: -1;
             border-radius: 20px;
             pointer-events: none;
@@ -1640,20 +1701,20 @@
             </div>
             <div class="hero-visual">
                 <div class="cyber-visual">
-                    <div class="global-protection-interface">
-                        <div class="world-map-hologram"></div>
-                        <div class="threat-indicators">
-                            <div class="threat-level high">THREAT: HIGH</div>
-                            <div class="threat-level medium">MONITORING</div>
-                            <div class="threat-level">SECURE</div>
+                    <div class="global-threat-monitor">
+                        <div class="earth-satellite-display">
+                            <div class="threat-overlay"></div>
+                            <div class="scanning-ring"></div>
                         </div>
-                        <div class="security-grid"></div>
-                        <div class="data-streams">
-                            <div class="stream-line"></div>
-                            <div class="stream-line"></div>
-                            <div class="stream-line"></div>
-                            <div class="stream-line"></div>
-                            <div class="stream-line"></div>
+                        <div class="threat-analytics">
+                            <div class="threat-indicator critical">CRITICAL ALERTS</div>
+                            <div class="threat-indicator">MONITORING: 247</div>
+                            <div class="threat-indicator secure">SYSTEMS: SECURE</div>
+                        </div>
+                        <div class="global-network-lines">
+                            <div class="network-line"></div>
+                            <div class="network-line"></div>
+                            <div class="network-line"></div>
                         </div>
                     </div>
                 </div>
