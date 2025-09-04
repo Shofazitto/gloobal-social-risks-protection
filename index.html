@@ -12,22 +12,41 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: #ffffff;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
+            overflow-x: hidden;
+        }
+
+        /* Cyber grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
         }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
             color: white;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .nav-container {
@@ -41,9 +60,11 @@
 
         .logo {
             font-size: 1.8rem;
-            font-weight: bold;
-            color: white;
+            font-weight: 800;
+            color: #00ffff;
             text-decoration: none;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            letter-spacing: 1px;
         }
 
         .nav-links {
@@ -53,82 +74,163 @@
         }
 
         .nav-links a {
-            color: white;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: #93c5fd;
+            color: #00ffff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
         }
 
         .contact-btn {
-            background: #1e40af;
-            color: white;
+            background: linear-gradient(135deg, #00ffff, #0080ff);
+            color: #000;
             padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s ease;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
         }
 
         .contact-btn:hover {
-            background: #1e3a8a;
+            background: linear-gradient(135deg, #0080ff, #00ffff);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(59, 130, 246, 0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e0f2fe" width="1200" height="600"/><path fill="%23f0f9ff" d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
-            background-size: cover;
-            background-position: center;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 128, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
             margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%2300ffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         .hero-content {
-            max-width: 800px;
-            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            text-align: left;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 800;
+            background: linear-gradient(135deg, #00ffff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
         }
 
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            color: #b0b8c8;
+            line-height: 1.6;
         }
 
         .cta-btn {
-            background: #1e40af;
-            color: white;
-            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #00ffff, #0080ff);
+            color: #000;
+            padding: 1.2rem 2.5rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 30px;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .cta-btn:hover {
-            background: #1e3a8a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+            background: linear-gradient(135deg, #0080ff, #00ffff);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 255, 255, 0.4);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .cyber-visual {
+            width: 400px;
+            height: 400px;
+            background: 
+                radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%),
+                linear-gradient(45deg, rgba(0, 128, 255, 0.1), rgba(0, 255, 255, 0.1));
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .cyber-visual::before {
+            content: '🛡️';
+            font-size: 8rem;
+            opacity: 0.8;
+        }
+
+        .cyber-visual::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ffff, #0080ff, #00ffff);
+            border-radius: 22px;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Main Content */
@@ -140,160 +242,274 @@
 
         /* Company Introduction */
         .company-intro {
-            background: #1e3a8a;
+            background: rgba(26, 31, 58, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
             color: white;
             padding: 4rem 2rem;
             margin: 2rem 0;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(0, 128, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .intro-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 2fr;
             gap: 4rem;
-            align-items: center;
+            align-items: start;
+            position: relative;
+            z-index: 2;
         }
 
         .intro-text h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: #93c5fd;
+            background: linear-gradient(135deg, #00ffff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
         }
 
         .intro-text p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            color: #b0b8c8;
+            line-height: 1.6;
         }
 
         .intro-btn {
-            background: #3b82f6;
-            color: white;
+            background: linear-gradient(135deg, #00ffff, #0080ff);
+            color: #000;
             padding: 1rem 2rem;
             border: none;
-            border-radius: 8px;
-            font-weight: 600;
+            border-radius: 25px;
+            font-weight: 700;
             text-decoration: none;
             display: inline-block;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
         }
 
         .intro-btn:hover {
-            background: #2563eb;
+            background: linear-gradient(135deg, #0080ff, #00ffff);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
         }
 
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             margin: 3rem 0;
         }
 
         .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 4px solid #3b82f6;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(0, 128, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 255, 255, 0.2);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
         }
 
         .service-icon {
-            width: 50px;
-            height: 50px;
-            background: #3b82f6;
-            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00ffff, #0080ff);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: #000;
+            position: relative;
+            z-index: 2;
         }
 
         .service-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 1rem;
-            color: #1e3a8a;
+            color: #ffffff;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
         }
 
         .service-card p {
-            color: #666;
-            line-height: 1.6;
+            color: #b0b8c8;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
         }
 
         /* Additional Services */
         .additional-services {
-            background: white;
+            background: rgba(26, 31, 58, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
             padding: 4rem 2rem;
             margin: 3rem 0;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .additional-services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 128, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .services-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .service-item {
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .service-item img {
+        .service-item:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.1);
+        }
+
+        .service-visual {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 128, 255, 0.1));
             border-radius: 10px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 1px solid rgba(0, 255, 255, 0.2);
         }
 
         .service-item h3 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: #1e3a8a;
+            color: #ffffff;
+            font-weight: 700;
         }
 
         .service-item p {
-            color: #666;
+            color: #b0b8c8;
             font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         /* Contact Section */
         .contact-section {
-            background: #1e3a8a;
+            background: rgba(26, 31, 58, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
             color: white;
             padding: 4rem 2rem;
             margin: 3rem 0;
-            border-radius: 15px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 128, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .contact-content {
             max-width: 600px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .contact-content h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: #93c5fd;
+            background: linear-gradient(135deg, #00ffff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
         }
 
         .contact-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            color: #b0b8c8;
         }
 
         .contact-form {
@@ -316,23 +532,26 @@
         .form-group input,
         .form-group textarea {
             padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
             color: white;
             font-size: 1rem;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(0, 255, 255, 0.6);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
         }
 
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.6);
         }
 
         .captcha-group {
@@ -348,24 +567,29 @@
         }
 
         .submit-btn {
-            background: #3b82f6;
-            color: white;
+            background: linear-gradient(135deg, #00ffff, #0080ff);
+            color: #000;
             padding: 1rem 2rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 25px;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
         }
 
         .submit-btn:hover {
-            background: #2563eb;
+            background: linear-gradient(135deg, #0080ff, #00ffff);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
         }
 
         /* Footer */
         .footer {
-            background: #1e3a8a;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
             color: white;
             padding: 3rem 2rem 2rem;
             margin-top: 3rem;
@@ -442,6 +666,16 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
@@ -452,12 +686,23 @@
                 gap: 1rem;
             }
 
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
 
             .hero p {
                 font-size: 1.1rem;
+            }
+
+            .cyber-visual {
+                width: 300px;
+                height: 300px;
             }
 
             .intro-content {
@@ -514,9 +759,14 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Expert advisory and discreet protection against global social risks</h1>
-            <p>TzurGroup is a prominent strategic advisory firm dedicated to upholding public integrity, analyzing emerging risk patterns, and providing essential support to communities at risk of social harm — with an expert focus on threats related to antisemitism and geopolitical narratives.</p>
-            <a href="contact.html" class="cta-btn">Book a consultation!</a>
+            <div class="hero-text">
+                <h1>Expert advisory and discreet protection against global social risks</h1>
+                <p>TzurGroup is a prominent strategic advisory firm dedicated to upholding public integrity, analyzing emerging risk patterns, and providing essential support to communities at risk of social harm — with an expert focus on threats related to antisemitism and geopolitical narratives.</p>
+                <a href="contact.html" class="cta-btn">Book a consultation!</a>
+            </div>
+            <div class="hero-visual">
+                <div class="cyber-visual"></div>
+            </div>
         </div>
     </section>
 
@@ -577,25 +827,25 @@
 
         <!-- Additional Services -->
         <section id="services" class="additional-services">
-            <h2 style="text-align: center; margin-bottom: 2rem; color: #1e3a8a; font-size: 2.5rem;">Our Specialized Services</h2>
+            <h2 style="text-align: center; margin-bottom: 2rem; background: linear-gradient(135deg, #00ffff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 2.5rem; font-weight: 800; position: relative; z-index: 2;">Our Specialized Services</h2>
             <div class="services-row">
                 <div class="service-item">
-                    <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #3b82f6, #1e40af); border-radius: 10px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🏛️</div>
+                    <div class="service-visual">🏛️</div>
                     <h3>Image Resilience Solutions</h3>
                     <p>Elevating national and organizational reputation through a forward-thinking strategy.</p>
                 </div>
                 <div class="service-item">
-                    <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #10b981, #059669); border-radius: 10px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">📝</div>
+                    <div class="service-visual">📝</div>
                     <h3>Institutional Trust Audit</h3>
                     <p>Advising institutions on structural biases, indirect antisemitism, and cultural exclusion within governance, education, hiring, or funding systems.</p>
                 </div>
                 <div class="service-item">
-                    <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #f59e0b, #d97706); border-radius: 10px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">❤️</div>
+                    <div class="service-visual">❤️</div>
                     <h3>Secure Advocacy Support</h3>
                     <p>Assisting partner-led events, mobilizations, and public-facing engagements.</p>
                 </div>
                 <div class="service-item">
-                    <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #8b5cf6, #7c3aed); border-radius: 10px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🌐</div>
+                    <div class="service-visual">🌐</div>
                     <h3>Geo-Pulse Monitoring</h3>
                     <p>Real-time alerts and mapping of socio-political unrest and sentiment.</p>
                 </div>
