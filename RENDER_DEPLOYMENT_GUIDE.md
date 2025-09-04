@@ -11,7 +11,7 @@
 ### 2. Push to GitHub
 ```bash
 # Add your GitHub repository as remote origin
-git remote add origin https://github.com/YOUR_USERNAME/tzurgroup-website.git
+git remote add origin https://github.com/shofalitto/tzurgroup-website.git
 
 # Push your code to GitHub
 git branch -M main
